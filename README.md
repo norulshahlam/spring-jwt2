@@ -10,8 +10,8 @@ There will be in 4 parts in this tutorial:
 - Version 3. Verify jwt token
 - Version 4. Refresh token
 
-A user will have basic details like name, username, id, password.
-at the same time it will also have roles / multiple roles.
+A user will have basic details like name, username, id, password.  
+A user can >1 roles.
 
         
     +----+-----------------------+----------+----------+
