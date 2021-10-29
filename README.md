@@ -102,6 +102,8 @@ Always confirm your connection with db before anything else. Once conencted, the
 
 Once datasource is added, run the app to see if it manages to connect. And also check if database is created:  
 
+### Test DB
+
 Run mysql in cli using docker  
 
     docker exec -it localhost bash  
