@@ -71,12 +71,12 @@ The ouput will be something like this:
 
 
 
-### setup docker for db
+### Setup docker for db
 
     docker run --detach --env MYSQL_ROOT_PASSWORD=root --env MYSQL_DATABASE=mydb --env MYSQL_PASSWORD=root --env MYSQL_USER=admin --name localhost --publish 3306:3306 mysql:8.0
 
 
-### create project with dependencies
+### Create project with dependencies
 
     web
     jpa
@@ -89,14 +89,14 @@ The ouput will be something like this:
 
 ### Entity, Repo, Service, Controller.
 
-  User & Role entity
+- Define your User & Role entity
 
-### add load schema & data in db on Spring start
+### Add schema & data in db on Spring start
 
-    Use CommandLineRunner to add initial data into db
+- Use CommandLineRunner to add initial data into db
 
 
-### configure datasource
+### Configure datasource
 
     spring.datasource.url=jdbc:mysql://localhost:3306/mydb?useLegacyDatetimeCode=false&serverTimezone=UTC
     spring.datasource.username=admin
@@ -108,32 +108,32 @@ The ouput will be something like this:
     spring.jpa.hibernate.ddl-auto=create
     spring.sql.init.mode=always
 
-### configure servlet context
+### Configure servlet context
 
     server.servlet.context-path=/jwt
 
-### test initial data in browser /api/getUsers
+### Test initial data in browser /api/getUsers
 
-  On any browser, go to: localhost:8081/api/users
+- On any browser, go to: localhost:8081/api/users
 
-  since we use spring security dependency, it will secure by default. on runtime, it will generate default password.  use 'user' as your default username. if success, u will be able to see all users
+Since we use spring security dependency, it will secure by default. on runtime, it will generate default password.  use 'user' as your default username. if success, u will be able to see all users
 
-### test initial data in db
+### Test initial data in db
 
-`run mysql in cli using docker`  
+- Run mysql in cli using docker  
   docker exec -it localhost bash
 
-`connect to mysql`  
+- Connect to mysql  
   mysql -u admin -proot
 
-`test`  
+- Test  
 	use mydb;
 	show tables;
   select * from user;
   select * from role;
   select * from user_roles;
 
-`stop & remove all running proceses`  
+- Stop & remove all running proceses  
 	docker rm $(docker ps -a -q) -f
 
 
