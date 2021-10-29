@@ -81,7 +81,7 @@ The ouput will be something like this:
     docker run --detach --env MYSQL_ROOT_PASSWORD=root --env MYSQL_DATABASE=mydb --env MYSQL_PASSWORD=root --env MYSQL_USER=admin --name localhost --publish 3306:3306 mysql:8.0
 
 ### Create project with dependencies
-
+ 
     web
     jpa
     mysql connector
@@ -140,6 +140,7 @@ Check your DB again to see if those tables are created accordingly:
 
 - Use CommandLineRunner to add initial data into db
 - Or use data.sql. Either way.
+- Now check DB and see if all data are added sucessfully.
 
 
 ### Configure servlet context
