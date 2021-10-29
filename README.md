@@ -10,8 +10,8 @@ this will be in 4 parts:
 - Version 3. verify jwt token
 - Version 4. refresh token
 
-  A user will have basic details like name, username, id, password.
-  at the same time it will also have roles / multiple roles.
+A user will have basic details like name, username, id, password.
+at the same time it will also have roles / multiple roles.
 
         
     +----+-----------------------+----------+----------+
