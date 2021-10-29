@@ -120,25 +120,25 @@ Since we use spring security dependency, it will secure by default. on runtime, 
 
 ### Test initial data in db
 
--Run mysql in cli using docker
+Run mysql in cli using docker
 
   docker exec -it localhost bash  
 
-- Connect to mysql   
+Connect to mysql   
 
-   mysql -u admin -proot  
+  mysql -u admin -proot  
 
-- Test   
+Test   
 
-    use mydb;  
-    show tables;  
-    select * from user;  
-    select * from role;  
-    select * from user_roles;  
+  use mydb;  
+  show tables;  
+  select * from user;  
+  select * from role;  
+  select * from user_roles;  
 
-- Stop & remove all running proceses  
+Stop & remove all running proceses  
 
-  	docker rm $(docker ps -a -q) -f  
+  docker rm $(docker ps -a -q) -f  
 
 
 
