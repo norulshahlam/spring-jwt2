@@ -122,23 +122,23 @@ Since we use spring security dependency, it will secure by default. on runtime, 
 
 - Run mysql in cli using docker  
 
-  docker exec -it localhost bash
+   docker exec -it localhost bash
 
 - Connect to mysql  
 
-  mysql -u admin -proot
+   mysql -u admin -proot
 
 - Test  
 
-	use mydb;
-	show tables;
-  select * from user;
-  select * from role;
-  select * from user_roles;
+    use mydb;
+    show tables;
+    select * from user;
+    select * from role;
+    select * from user_roles;
 
 - Stop & remove all running proceses  
 
-	docker rm $(docker ps -a -q) -f
+  	docker rm $(docker ps -a -q) -f
 
 
 
