@@ -75,7 +75,6 @@ The ouput will be something like this:
 
     docker run --detach --env MYSQL_ROOT_PASSWORD=root --env MYSQL_DATABASE=mydb --env MYSQL_PASSWORD=root --env MYSQL_USER=admin --name localhost --publish 3306:3306 mysql:8.0
 
-
 ### Create project with dependencies
 
     web
@@ -85,18 +84,11 @@ The ouput will be something like this:
     lombok
     jaxb-api
     security
-    jjwt
-
-### Entity, Repo, Service, Controller.
-
-- Define your User & Role entity
-
-### Add schema & data in db on Spring start
-
-- Use CommandLineRunner to add initial data into db
-
+    java-jwt
 
 ### Configure datasource
+
+Always confirm your connection with db before anything else. Once conencted, then you can setup the rest.  
 
     spring.datasource.url=jdbc:mysql://localhost:3306/mydb?useLegacyDatetimeCode=false&serverTimezone=UTC
     spring.datasource.username=admin
@@ -107,6 +99,16 @@ The ouput will be something like this:
     spring.jpa.properties.hibernate.format.sql=true
     spring.jpa.hibernate.ddl-auto=create
     spring.sql.init.mode=always
+
+
+### Entity, Repo, Service, Controller.
+
+- Define your User & Role entity
+
+### Add schema & data in db on Spring start
+
+- Use CommandLineRunner to add initial data into db
+
 
 ### Configure servlet context
 
