@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -15,13 +17,14 @@ import static javax.persistence.GenerationType.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String name;
     private String username;
     private String password;
-    @ManyToMany(fetch = FetchType.EAGER)
+@ManyToMany(fetch = EAGER)
     private Collection<Role> roles = new ArrayList<Role>();
 }

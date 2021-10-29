@@ -2,13 +2,18 @@
 # Spring Security with JWT - Version 1 - Setup User and roles and secure API
 ###  
 
-### Use Case
 
 There will be in 4 parts in this tutorial:  
 - Version 1. Setup User and roles and secure API
 - Version 2. Generate jwt token
 - Version 3. Verify jwt token
 - Version 4. Refresh token
+
+### Use Case
+
+Access all users using 'user' as user and generated password as passowrd
+
+### Structure  
 
 A user will have basic details like name, username, id, password.  
 A user can >1 roles.
@@ -121,8 +126,9 @@ Test
 
 - Define your User & Role entity 
 - Make sure User has ManyToMany relationship with Role 
+- UserService must contain methods to add user, role, and add role to user.
 
-Check your DB again to see if those tables are added:  
+Check your DB again to see if those tables are created accordingly:  
 
     use mydb;  
     show tables;  
@@ -133,6 +139,7 @@ Check your DB again to see if those tables are added:
 ### Add schema & data in db on Spring start
 
 - Use CommandLineRunner to add initial data into db
+- Or use data.sql. Either way.
 
 
 ### Configure servlet context
@@ -141,7 +148,7 @@ Check your DB again to see if those tables are added:
 
 ### Test initial data in browser /api/getUsers
 
-- On any browser, go to: localhost:8081/api/users
+- On any BROWSER, go to: localhost:8081/api/users
 
 Since we use spring security dependency, it will secure by default. on runtime, it will generate default password.  use 'user' as your default username. if success, u will be able to see all users
 
