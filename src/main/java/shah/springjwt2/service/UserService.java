@@ -29,6 +29,8 @@ public class UserService {
 
     private final UserRepo userRepo;
     private final RoleRepo roleRepo;
+    private final PasswordEncoder passwordEncoder;
+
 
     public ResponseEntity<?> getAllUsers(){
         return new ResponseEntity<Object>(userRepo.findAll(), HttpStatus.OK);
@@ -36,6 +38,8 @@ public class UserService {
 
     public ResponseEntity<?> saveUser(User user) {
         log.info("Saving new user {} to the database", user.getName());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         return new ResponseEntity<Object>(userRepo.save(user), HttpStatus.CREATED);
     }
 
