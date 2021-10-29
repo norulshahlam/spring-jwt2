@@ -4,11 +4,11 @@
 
 ### Use Case
 
-this will be in 4 parts:  
+There will be in 4 parts in this tutorial:  
 - Version 1. Setup User and roles and secure API
-- Version 2. generate jwt token
-- Version 3. verify jwt token
-- Version 4. refresh token
+- Version 2. Generate jwt token
+- Version 3. Verify jwt token
+- Version 4. Refresh token
 
 A user will have basic details like name, username, id, password.
 at the same time it will also have roles / multiple roles.
