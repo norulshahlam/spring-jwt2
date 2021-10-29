@@ -45,7 +45,7 @@ at the same time it will also have roles / multiple roles.
     |       8 |        1 |
     +---------+----------+
 
-    The ouput will be something like this:
+The ouput will be something like this:
 
     {
     "id": 8,
