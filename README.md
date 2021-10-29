@@ -104,7 +104,7 @@ Once datasource is added, run the app to see if it manages to connect. And also 
 
 ### Test DB
 
-Run mysql in cli using docker  
+Run docker mysql in cli  
 
     docker exec -it localhost bash  
 
@@ -119,7 +119,15 @@ Test
 
 ### Entity, Repo, Service, Controller.
 
-- Define your User & Role entity
+- Define your User & Role entity 
+- Make sure User has ManyToMany relationship with Role
+Check your DB again to see if those tables are added:
+
+    use mydb;  
+    show tables;  
+    select * from user;  
+    select * from role;  
+    select * from user_roles;  
 
 ### Add schema & data in db on Spring start
 
