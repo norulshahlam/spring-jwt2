@@ -100,6 +100,20 @@ Always confirm your connection with db before anything else. Once conencted, the
     spring.jpa.hibernate.ddl-auto=create
     spring.sql.init.mode=always
 
+Once datasource is added, run the app to see if it manages to connect. And also check if database is created:  
+
+Run mysql in cli using docker  
+
+    docker exec -it localhost bash  
+
+Connect to mysql   
+
+    mysql -u admin -proot  
+
+Test   
+
+    use mydb;  
+    show databases;
 
 ### Entity, Repo, Service, Controller.
 
