@@ -122,7 +122,7 @@ Since we use spring security dependency, it will secure by default. on runtime, 
 
 Run mysql in cli using docker  
 
-  docker exec -it localhost bash  
+    docker exec -it localhost bash  
 
 Connect to mysql   
 
