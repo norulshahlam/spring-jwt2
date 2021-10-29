@@ -120,9 +120,9 @@ Since we use spring security dependency, it will secure by default. on runtime, 
 
 ### Test initial data in db
 
-- Run mysql in cli using docker   
+- Run mysql in cli using docker
 
-   docker exec -it localhost bash  
+  docker exec -it localhost bash  
 
 - Connect to mysql   
 
