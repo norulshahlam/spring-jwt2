@@ -120,8 +120,9 @@ Test
 ### Entity, Repo, Service, Controller.
 
 - Define your User & Role entity 
-- Make sure User has ManyToMany relationship with Role  
-Check your DB again to see if those tables are added:
+- Make sure User has ManyToMany relationship with Role 
+
+Check your DB again to see if those tables are added:  
 
     use mydb;  
     show tables;  
