@@ -140,6 +140,7 @@ Check your DB again to see if those tables are created accordingly:
 
 - Use CommandLineRunner to add initial data into db
 - Or use data.sql. Either way.
+- Now check DB and see if all data are added sucessfully.
 
 
 ### Configure servlet context
