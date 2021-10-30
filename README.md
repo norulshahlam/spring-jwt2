@@ -2,11 +2,13 @@
 
 ### High level overview
 
+- Encrypt your user's password using BCrypt
 - Setup SecurityConfig
 - Implement custom UserDetailsService to validate user credentials
 - Create a CustomAuthenticationFilter to intercept only for logging in. Here is where we generate JWT. 
 - Inside CustomAuthenticationFilter, get login details and use our custom UserDetailsService to validate
 - If validation success, generate JWT
+- Set your session to stateless
 
 
 
