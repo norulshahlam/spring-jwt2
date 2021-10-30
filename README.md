@@ -1,3 +1,17 @@
+# Spring Security with JWT - Version 3 - Read JWT
+
+### CustomAuthorizationFilter
+
+- Now that we have created JWT in our CustomAuthenticationFilter, lets create CustomAuthorizationFilter to read JWT
+
+- Add this class as argument in addFilterBefore() so it will filter all requests. This ensures users must be authenticated before making any requests.
+
+- Since this is to check whether user is authenticated, exclude requests for login and refresh tokens.
+
+
+### configure your url for authorisation
+
+
 # Spring Security with JWT - Version 2 - Generate JWT 
 
 ## High level overview
