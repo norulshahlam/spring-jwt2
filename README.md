@@ -1,6 +1,6 @@
 # Spring Security with JWT - Version 2 - Generate JWT 
 
-### High level overview
+## High level overview
 
 - Encrypt your user's password using BCrypt
 - Setup SecurityConfig
