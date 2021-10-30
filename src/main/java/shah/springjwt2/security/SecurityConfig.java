@@ -1,5 +1,7 @@
 package shah.springjwt2.security;
 
+import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,10 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
-
 import lombok.RequiredArgsConstructor;
-import shah.springjwt2.filter.security.CustomAuthenticationFilter;
+import shah.springjwt2.filter.CustomAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
