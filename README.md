@@ -9,9 +9,6 @@
 - Since this is to check whether user is authenticated, exclude requests for login and refresh tokens.
 
 
-### configure your url for authorisation
-
-
 # Spring Security with JWT - Version 2 - Generate JWT 
 
 ## High level overview
