@@ -10,9 +10,22 @@
 - If validation success, generate JWT
 - Set your session to stateless
 
+## Testing
 
+- Lets test to see if we can generate JWT  
 
+Use Postman:  
 
+        POST http:8081/login
+
+        > Body > x-www-form >
+
+        username: john
+        password: 1234
+
+You will get jwt as the response.
+
+ 
 ###   
 # Spring Security with JWT - Version 1 - Setup User and roles and secure API  
 ###   
