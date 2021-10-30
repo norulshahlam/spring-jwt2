@@ -1,8 +1,11 @@
 # Spring Security with JWT - Version 2 - Generate JWT 
 
+### High level overview
+
+- Setup SecurityConfig
 - Implement custom UserDetailsService to validate user credentials
-- Create a CustomAuthenticationFilter to intercept only for logging in & generate JWT
-- Inside CustomAuthenticationFilter, get credentials and use our custom UserDetailsService to validate
+- Create a CustomAuthenticationFilter to intercept only for logging in. Here is where we generate JWT. 
+- Inside CustomAuthenticationFilter, get login details and use our custom UserDetailsService to validate
 - If validation success, generate JWT
 
 
