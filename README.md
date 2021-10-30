@@ -9,6 +9,26 @@
 - Since this is to check whether user is authenticated, exclude requests for login and refresh tokens.
 
 
+## Testing
+
+Run the same step to generate jwt
+
+        POST http:8081/login
+
+        > Body > x-www-form >
+
+        username: john
+        password: 1234
+
+When you get the JWT, make another request again:
+
+    GET localhost:8081/api/users
+    > Body > x-www-form >
+    Authorisation: Bearer <token>
+
+The response will return list of users
+
+
 # Spring Security with JWT - Version 2 - Generate JWT 
 
 ## High level overview
@@ -21,6 +41,21 @@
 - If validation success, generate JWT
 - Set your session to stateless
 
+
+## Testing
+
+- Lets test to see if we can generate JWT  
+
+Use Postman:  
+
+        POST http:8081/login
+
+        > Body > x-www-form >
+
+        username: john
+        password: 1234
+
+You will get jwt as the response.
 
 
 
