@@ -61,7 +61,7 @@ public class UserService implements UserDetailsService {
 
         return new ResponseEntity<Object>(user.getRoles().add(role), HttpStatus.CREATED);
     }
-
+ 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepo.findByUsername(username);
