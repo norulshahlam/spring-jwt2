@@ -1,4 +1,4 @@
-package shah.springjwt2.filter.security;
+package shah.springjwt2.filter;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
