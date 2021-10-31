@@ -23,8 +23,7 @@ Run the same step to generate jwt
 When you get the JWT, make another request again:
 
     GET localhost:8081/api/users
-    > Body > x-www-form >
-    Authorisation: Bearer <token>
+    > Headers >  Authorisation: Bearer <token>
 
 The response will return list of users
 
