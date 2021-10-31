@@ -13,12 +13,12 @@
 
 Run the same step to generate jwt
 
-        POST http:8081/login
+    POST http:8081/login
 
-        > Body > x-www-form >
+    > Body > x-www-form >
 
-        username: john
-        password: 1234
+    username: john
+    password: 1234
 
 When you get the JWT, make another request again:
 
