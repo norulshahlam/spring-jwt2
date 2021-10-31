@@ -1,26 +1,22 @@
 # Spring Security with JWT - Version 4 - Refresh JWT token
 
-During successful login, an access token and refresh token is generated. access token have short expiry so we will use refresh token which has longer expiry. This is how it goes:
+During successful login, an access token and refresh token is generated. access token have short expiry so we will use refresh token which has longer expiry. The diffference now is when we use refresh token with it's URL, it will check the JWT as usual and if success, it will create a new access and refresh token, similar to when we /login
 
+### High level overview
 
-### in security config, allow this url to pass thru
-
-### in filter, allow this url to pass through.
+- Create controller for /token/refresh. Here we will check JWT, then create new access & refresh token.
+- In security config, allow this url to pass thru
 
 ### test
 
-  set token to expire in 1 min
-  login user to get token
-  get allusers using this token
-  let 1 min pass to expire the tokens
-  get all users again to check if it expires
-  now GET localhost:8081/api/token/refresh,
-    > Body > x-www-form >
-    Authorisation: Bearer <refresh-token>
-
-  the response will new token and refresh token
-- Create controller for refresh-token
-- 
+- Set token to expire in 1 min to simulate expired token
+- Login to get token
+- GET localhost:8081/api/users with your token to see if your access token is working
+- Wait for a minute to expire your access token
+- Get all users again to check if it expires
+- If it has expires, GET localhost:8081/api/token/refresh/ with your refresh token
+- You will get a new set of access and refresh token
+- GET localhost:8081/api/users with your access token to see if your access token is working
 
 
 # Spring Security with JWT - Version 3 - Read JWT
