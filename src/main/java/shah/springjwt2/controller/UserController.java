@@ -6,6 +6,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import shah.springjwt2.model.Role;
 import shah.springjwt2.model.User;
 import shah.springjwt2.service.UserService;
 
