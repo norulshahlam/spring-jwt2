@@ -7,7 +7,7 @@ During successful login, an access token and refresh token is generated. access 
 - Create controller for /token/refresh. Here we will check JWT, then create new access & refresh token.
 - In security config, allow this url to pass thru
 
-### test
+### Test
 
 - Set token to expire in 1 min to simulate expired token
 - Login to get token
@@ -16,7 +16,7 @@ During successful login, an access token and refresh token is generated. access 
 - Get all users again to check if it expires
 - If it has expires, GET localhost:8081/api/token/refresh/ with your refresh token
 - You will get a new set of access and refresh token
-- GET localhost:8081/api/users with your access token to see if your access token is working
+- GET localhost:8081/api/users with your NEW access token to see if your NEW access token is working
 
 
 # Spring Security with JWT - Version 3 - Read JWT
