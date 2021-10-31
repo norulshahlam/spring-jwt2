@@ -1,4 +1,5 @@
 package shah.springjwt2.controller;
+
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 
@@ -29,24 +30,24 @@ import lombok.RequiredArgsConstructor;
 import shah.springjwt2.model.Role;
 import shah.springjwt2.model.User;
 import shah.springjwt2.service.UserService;
+
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-    
+
     @GetMapping("/users")
-    public ResponseEntity<?>getUsers() {
+    public ResponseEntity<?> getUsers() {
         return new ResponseEntity<Object>(userService.getAllUsers(), HttpStatus.OK);
     }
 
-    
     @GetMapping("/token/refresh")
     public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String authorizationHeader = request.getHeader(AUTHORIZATION);
-        if(authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             try {
-                 // VERIFY JWT
+                // VERIFY JWT
                 String refresh_token = authorizationHeader.substring("Bearer ".length());
                 Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());
                 JWTVerifier verifier = JWT.require(algorithm).build();
@@ -54,8 +55,7 @@ public class UserController {
                 String username = decodedJWT.getSubject();
                 User user = userService.getUser(username);
                 // CREATE JWT
-                String access_token = JWT.create()
-                        .withSubject(user.getUsername())
+                String access_token = JWT.create().withSubject(user.getUsername())
                         .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000))
                         .withIssuer(request.getRequestURL().toString())
                         .withClaim("roles", user.getRoles().stream().map(Role::getName).collect(Collectors.toList()))
@@ -65,10 +65,10 @@ public class UserController {
                 tokens.put("refresh_token", refresh_token);
                 response.setContentType(MediaType.APPLICATION_JSON_VALUE);
                 new ObjectMapper().writeValue(response.getOutputStream(), tokens);
-            }catch (Exception exception) {
+            } catch (Exception exception) {
                 response.setHeader("error", exception.getMessage());
                 response.setStatus(FORBIDDEN.value());
-                //response.sendError(FORBIDDEN.value());
+                // response.sendError(FORBIDDEN.value());
                 Map<String, String> error = new HashMap<>();
                 error.put("error_message", exception.getMessage());
                 response.setContentType(MimeTypeUtils.APPLICATION_JSON_VALUE);

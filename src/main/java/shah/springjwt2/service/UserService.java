@@ -30,8 +30,7 @@ public class UserService implements UserDetailsService {
     private final RoleRepo roleRepo;
     private final PasswordEncoder passwordEncoder;
 
-
-    public ResponseEntity<?> getAllUsers(){
+    public ResponseEntity<?> getAllUsers() {
         System.out.println(userRepo.findAll());
         return new ResponseEntity<Object>(userRepo.findAll(), HttpStatus.OK);
     }
@@ -53,18 +52,18 @@ public class UserService implements UserDetailsService {
         return new ResponseEntity<Object>(roleRepo.save(role), HttpStatus.CREATED);
     }
 
-    public ResponseEntity<?> addRoleToUser(String username, String rolename){
+    public ResponseEntity<?> addRoleToUser(String username, String rolename) {
         log.info("Adding role {} to user {}", rolename, username);
         User user = userRepo.findByUsername(username);
         Role role = roleRepo.findByName(rolename);
 
         return new ResponseEntity<Object>(user.getRoles().add(role), HttpStatus.CREATED);
     }
- 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepo.findByUsername(username);
-        if(user == null) {
+        if (user == null) {
             log.error("User not found in the database");
             throw new UsernameNotFoundException("User not found in the database");
         } else {
@@ -73,7 +72,8 @@ public class UserService implements UserDetailsService {
             user.getRoles().forEach(role -> {
                 authorities.add(new SimpleGrantedAuthority(role.getName()));
             });
-            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
+            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+                    authorities);
         }
     }
 }
