@@ -1,7 +1,7 @@
 # Spring Security with JWT - Version 5 - Add more URL requests
 
 All this while we only have getAllUser() and refresh token in our controller. Lets add more requests handler!
-
+ 
 `Get 1 user`
 
     GET http://localhost:8081/api/users/john
