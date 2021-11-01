@@ -86,13 +86,14 @@ public class UserController {
 
                 // CREATE JWT
                 User user = userService.getUser(username);
-                String access_token = JWT.create().withSubject(user.getUsername())
+                String access_token = JWT
+                .create()
+                .withSubject(user.getUsername())
                 .withExpiresAt(ACCESS_TOKEN_VALIDITY)
-                        .withIssuer(request.getRequestURL().toString())
-                        .withClaim("roles", user.getRoles().stream().map(Role::getName)
-                        .collect(Collectors.toList()))
-                        
-                        .sign(ALGORITHM);
+                .withIssuer(request.getRequestURL().toString())
+                .withClaim("roles", user.getRoles().stream().map(Role::getName)
+                .collect(Collectors.toList()))
+                .sign(ALGORITHM);
 
                 Map<String, String> tokens = new HashMap<>();
                 tokens.put("access_token", access_token);

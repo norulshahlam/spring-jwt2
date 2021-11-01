@@ -18,11 +18,15 @@ public class AccessTokenGenerator {
     }
 
     public static String generate(User user, HttpServletRequest request) {
-        String access_token = JWT.create().withSubject(user.getUsername()).withExpiresAt(ACCESS_TOKEN_VALIDITY)
-                .withIssuer(request.getRequestURL().toString())
-                .withClaim("roles",
-                        user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
-                .withClaim("Owner", "Norulshahlam").sign(ALGORITHM);
+        String access_token = JWT
+        .create()
+        .withSubject(user.getUsername())
+        .withExpiresAt(ACCESS_TOKEN_VALIDITY)
+        .withIssuer(request.getRequestURL().toString())
+        .withClaim("roles",
+                user.getAuthorities().stream().map(GrantedAuthority::getAuthority)
+        .collect(Collectors.toList()))
+        .withClaim("Owner", "Norulshahlam").sign(ALGORITHM);
         return access_token;
     }
 }
