@@ -1,3 +1,17 @@
+# Spring Security with JWT - Version 5 - Add more URL requests
+
+All this while we only have getAllUser() and refresh token in our controller. Lets add more requests handler!
+
+- Get 1 user
+- Create user
+- Create role
+- Add role to a user
+
+### Test
+
+Get 1 user:
+    
+
 # Spring Security with JWT - Version 4 - Refresh JWT token
 
 During successful login, an access token and refresh token is generated. Access token usually have short expiry so when we attempt to make a request later it will fail. To overcome this, we have our refresh token which has longer expiry. We will use this to generate a new set of access and refresh token, similar to when we /login

@@ -2,9 +2,8 @@ package shah.springjwt2.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -30,9 +29,22 @@ public class UserService implements UserDetailsService {
     private final RoleRepo roleRepo;
     private final PasswordEncoder passwordEncoder;
 
-    public ResponseEntity<?> getAllUsers() {
-        System.out.println(userRepo.findAll());
-        return new ResponseEntity<Object>(userRepo.findAll(), HttpStatus.OK);
+    public User saveUser(User user) {
+        log.info("Saving new user {} to the database", user.getName());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepo.save(user);
+    }
+
+    public Role saveRole(Role role) {
+        log.info("Saving new role {} to the database", role.getName());
+        return roleRepo.save(role);
+    }
+
+    public void addRoleToUser(String username, String roleName) {
+        log.info("Adding role {} to user {}", roleName, username);
+        User user = userRepo.findByUsername(username);
+        Role role = roleRepo.findByName(roleName);
+        user.getRoles().add(role);
     }
 
     public User getUser(String username) {
@@ -40,24 +52,9 @@ public class UserService implements UserDetailsService {
         return userRepo.findByUsername(username);
     }
 
-    public ResponseEntity<?> saveUser(User user) {
-        log.info("Saving new user {} to the database", user.getName());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-        return new ResponseEntity<Object>(userRepo.save(user), HttpStatus.CREATED);
-    }
-
-    public ResponseEntity<?> saveRole(Role role) {
-        log.info("Saving new role {} to the database", role.getName());
-        return new ResponseEntity<Object>(roleRepo.save(role), HttpStatus.CREATED);
-    }
-
-    public ResponseEntity<?> addRoleToUser(String username, String rolename) {
-        log.info("Adding role {} to user {}", rolename, username);
-        User user = userRepo.findByUsername(username);
-        Role role = roleRepo.findByName(rolename);
-
-        return new ResponseEntity<Object>(user.getRoles().add(role), HttpStatus.CREATED);
+    public List<User> getUsers() {
+        log.info("Fetching all users");
+        return userRepo.findAll();
     }
 
     @Override
