@@ -1,3 +1,9 @@
+# Spring Security with JWT - Version 6 - Code refectoring
+
+There are many repeeated codes so let's refactor them!
+Also lets extract JWT variables into property variables for security
+
+
 # Spring Security with JWT - Version 5 - Add more URL requests
 
 All this while we only have getAllUser() and refresh token in our controller. Lets add more requests handler!
