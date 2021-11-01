@@ -19,6 +19,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import static shah.springjwt2.constant.Constants.ACCESS_TOKEN_VALIDITY;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -83,13 +84,14 @@ public class UserController {
                 DecodedJWT decodedJWT = verifier.verify(refresh_token);
                 String username = decodedJWT.getSubject();
 
-                
                 // CREATE JWT
                 User user = userService.getUser(username);
                 String access_token = JWT.create().withSubject(user.getUsername())
-                        .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000))
+                .withExpiresAt(ACCESS_TOKEN_VALIDITY)
                         .withIssuer(request.getRequestURL().toString())
-                        .withClaim("roles", user.getRoles().stream().map(Role::getName).collect(Collectors.toList()))
+                        .withClaim("roles", user.getRoles().stream().map(Role::getName)
+                        .collect(Collectors.toList()))
+                        
                         .sign(ALGORITHM);
 
                 Map<String, String> tokens = new HashMap<>();
