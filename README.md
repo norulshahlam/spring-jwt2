@@ -2,15 +2,40 @@
 
 All this while we only have getAllUser() and refresh token in our controller. Lets add more requests handler!
 
-- Get 1 user
-- Create user
-- Create role
-- Add role to a user
+`Get 1 user`
+
+    GET http://localhost:8081/api/users/john
+
+`Create user`
+
+    POST http://localhost:8081/api/user/save
+    {
+        "name": "John Doe",
+        "username": "john",
+        "password": "abcd"
+    }
+
+`Create role`
+
+    POST http://localhost:8081/api/role/save
+    {
+        "name": "ROLE_MASTER"
+    }
+
+`Add role to a user`
+
+    POST http://localhost:8081/api/role/addtouser
+    {
+        "username":"john",
+        "roleName":"ROLE_MANAGER"
+    }
+
+
 
 ### Test
 
 Get 1 user:
-    
+
 
 # Spring Security with JWT - Version 4 - Refresh JWT token
 

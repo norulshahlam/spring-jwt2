@@ -40,11 +40,12 @@ public class UserService implements UserDetailsService {
         return roleRepo.save(role);
     }
 
-    public void addRoleToUser(String username, String roleName) {
-        log.info("Adding role {} to user {}", roleName, username);
+    public Collection<Role> addRoleToUser(String username, String roleName) {
         User user = userRepo.findByUsername(username);
         Role role = roleRepo.findByName(roleName);
+        log.info("Adding role {} to user {}", role, user);
         user.getRoles().add(role);
+        return user.getRoles();
     }
 
     public User getUser(String username) {
