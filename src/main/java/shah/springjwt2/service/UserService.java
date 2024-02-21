@@ -1,9 +1,7 @@
 package shah.springjwt2.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,14 +9,19 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import shah.springjwt2.model.Role;
 import shah.springjwt2.model.User;
 import shah.springjwt2.repository.RoleRepo;
 import shah.springjwt2.repository.UserRepo;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+
+/**
+ * @author NORUL
+ */
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -67,9 +70,7 @@ public class UserService implements UserDetailsService {
         } else {
             log.info("User found in the database: {}", username);
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            user.getRoles().forEach(role -> {
-                authorities.add(new SimpleGrantedAuthority(role.getName()));
-            });
+            user.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getName())));
             return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
                     authorities);
         }
