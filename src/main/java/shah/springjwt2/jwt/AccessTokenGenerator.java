@@ -1,16 +1,14 @@
 package shah.springjwt2.jwt;
 
-import static shah.springjwt2.constant.Constants.ACCESS_TOKEN_VALIDITY;
-import static shah.springjwt2.constant.Constants.ALGORITHM;
-
-import java.util.stream.Collectors;
+import com.auth0.jwt.JWT;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.auth0.jwt.JWT;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
+import static java.util.stream.Collectors.toList;
+import static shah.springjwt2.constant.Constants.ACCESS_TOKEN_VALIDITY;
+import static shah.springjwt2.constant.Constants.ALGORITHM;
 
 public class AccessTokenGenerator {
 
@@ -18,15 +16,14 @@ public class AccessTokenGenerator {
     }
 
     public static String generate(User user, HttpServletRequest request) {
-        String access_token = JWT
+        return JWT
         .create()
         .withSubject(user.getUsername())
         .withExpiresAt(ACCESS_TOKEN_VALIDITY)
         .withIssuer(request.getRequestURL().toString())
         .withClaim("roles",
                 user.getAuthorities().stream().map(GrantedAuthority::getAuthority)
-        .collect(Collectors.toList()))
+        .collect(toList()))
         .withClaim("Owner", "Norulshahlam").sign(ALGORITHM);
-        return access_token;
     }
 }
