@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.User;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static java.util.stream.Collectors.toList;
 import static shah.springjwt2.constant.Constants.ACCESS_TOKEN_VALIDITY;
 import static shah.springjwt2.constant.Constants.ALGORITHM;
 
@@ -23,7 +22,7 @@ public class AccessTokenGenerator {
         .withIssuer(request.getRequestURL().toString())
         .withClaim("roles",
                 user.getAuthorities().stream().map(GrantedAuthority::getAuthority)
-        .collect(toList()))
+        .toList())
         .withClaim("Owner", "Norulshahlam").sign(ALGORITHM);
     }
 }
