@@ -1,6 +1,6 @@
 # Spring Security with JWT - Version 6 - Code refectoring
 
-There are many repeeated codes so let's refactor them!
+There are many repeated codes so let's refactor them!
 Also lets extract JWT variables into property variables for security
 
 
