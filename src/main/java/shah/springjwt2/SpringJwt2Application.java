@@ -19,7 +19,12 @@ public class SpringJwt2Application {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringJwt2Application.class, args);
 	}
-	
+
+	@Bean
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
 	@Bean
 	CommandLineRunner run(UserService userService) {
 		return args -> {

@@ -1,0 +1,33 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+spring:
+  datasource:
+    url: jdbc:h2:mem:ptw
+    driver-class-name: org.h2.Driver
+  jpa:
+    generate-ddl: true
+    show-sql: false
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        format_sql: false
+        ddl-auto: create
+  sql:
+    init:
+      mode: always
+  application:
+    profile: dev
+  h2:
+    console:
+      enabled: true
+  batch:
+    job:
+      enabled: false
+    initialize-schema: ALWAYS

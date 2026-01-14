@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    username: admin
+    url: jdbc:mysql://localhost:3306/mydb?useLegacyDatetimeCode=false&serverTimezone=UTC
+    password: root
+  sql:
+    init:
+      mode: always
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format:
+          sql: true
+    hibernate:
+      ddl-auto: create
+server:
+  port: 8080
+jwt:
+  secret: javainuse

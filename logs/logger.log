@@ -1,0 +1,4 @@
+06-12-2022 Tue 00:00:00.039 [scheduling-1] INFO  c.s.b.scheduler.MyScheduler - Scheduler triggered for Every hour on 2022/12/06 00:00:00
+06-12-2022 Tue 01:27:18.544 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h8m41s99ms395µs600ns).
+06-12-2022 Tue 02:08:10.952 [scheduling-1] INFO  c.s.b.scheduler.MyScheduler - Scheduler triggered for Every hour on 2022/12/06 02:08:10
+06-12-2022 Tue 09:32:49.360 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7h16m30s146ms434µs301ns).
